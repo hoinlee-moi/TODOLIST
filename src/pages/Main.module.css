@@ -1,0 +1,65 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: white;
+}
+
+.mainWrap {
+  display: flex;
+  flex-direction: column;
+}
+.titleWrap {
+  font-size: 3vw;
+  animation: titlePadeIn 0.8s ease-out;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .titleWrap {
+    font-size: 16px;
+  }
+}
+@keyframes titlePadeIn {
+  from {
+    transform: translateY(60%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.signBtnWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.signBtnWrap button {
+    margin: 10px 15px 0 0;
+  padding: 10px;
+  font-size: 2vw;
+  animation: signBtnFadeIn 0.8s ease-out forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+@media (max-width: 480px) {
+  .signBtnWrap button {
+    font-size: 16px;
+  }
+}
+@keyframes signBtnFadeIn {
+  from {
+    transform: translateY(60%);
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.signBtnWrap button:hover {
+    font-weight: bold;
+}

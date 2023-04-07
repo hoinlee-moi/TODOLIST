@@ -1,12 +1,9 @@
 
-import './App.css';
+import "./App.css";
+import Router from "./Router";
 
 function App() {
-  return (
-    <div className="App">
-      <div>시작</div>
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;
