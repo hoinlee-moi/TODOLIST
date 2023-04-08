@@ -4,7 +4,6 @@
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  background-color: white;
 }
 
 .mainWrap {
@@ -13,18 +12,14 @@
 }
 .titleWrap {
   font-size: 3vw;
-  animation: titlePadeIn 0.8s ease-out;
+  animation: titlePadeIn 0.8s ease-out forwards;
   white-space: nowrap;
+  opacity: 0;
 }
-@media (max-width: 480px) {
-  .titleWrap {
-    font-size: 16px;
-  }
-}
+
 @keyframes titlePadeIn {
   from {
     transform: translateY(60%);
-    opacity: 0;
   }
   to {
     transform: translateY(0);
@@ -39,21 +34,18 @@
   text-align: center;
 }
 .signBtnWrap button {
-    margin: 10px 15px 0 0;
+  margin: 10px 15px 0 0;
   padding: 10px;
   font-size: 2vw;
+  
   animation: signBtnFadeIn 0.8s ease-out forwards;
   animation-delay: 0.6s;
   opacity: 0;
 }
-@media (max-width: 480px) {
-  .signBtnWrap button {
-    font-size: 16px;
-  }
-}
+
 @keyframes signBtnFadeIn {
   from {
-    transform: translateY(60%);
+    transform: translateY(40%);
   }
   to {
     transform: translateY(0);
@@ -62,4 +54,16 @@
 }
 .signBtnWrap button:hover {
     font-weight: bold;
+}
+
+@media (max-width: 728px) {
+  .titleWrap {
+    font-size: 22px;
+  }
+  
+}
+@media (max-width:900px) {
+  .signBtnWrap button {
+    font-size: 18px;
+  }
 }

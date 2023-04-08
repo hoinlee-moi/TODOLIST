@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import Main from "./pages/Main";
 import NoMatch from "./pages/NoMatch";
-import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Todo from "./pages/Todo";
 
 const Router = () => {
@@ -16,9 +16,9 @@ const Router = () => {
     { path: "/", element: <Main /> },
     {
       path: "/signup",
-      element: <Signup />,
+      element: <SignUp />,
     },
-    { path: "/signin", element: <Signin /> },
+    { path: "/signin", element: <SignIn /> },
     {
       path: "/todo",
       element: <Todo />,

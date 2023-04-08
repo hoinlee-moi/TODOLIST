@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import MyButton from "../components/MyButton";
 
 import styles from "./Main.module.css";
 
@@ -18,8 +19,8 @@ const Main = () => {
           <h2>To Do List에 오신 걸 환영합니다!</h2>
         </section>
         <section className={styles.signBtnWrap}>
-          <button onClick={()=>navigate("/signin")}>로그인하기</button>
-          <button onClick={()=>navigate("/signup")}>회원가입하기</button>
+          <MyButton clickHandle={()=>navigate("/signin")}>로그인하기</MyButton>
+          <MyButton clickHandle={()=>navigate("/signup")}>회원가입하기</MyButton> 
         </section>
       </div>
     </div>
