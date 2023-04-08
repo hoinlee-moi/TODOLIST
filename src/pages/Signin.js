@@ -30,7 +30,7 @@ const SignIn = () => {
         </section>
         {failMs.length>0&&<p>{failMs}</p>}
         <section className={styles.signInBtnWrap}>
-          <MyButton>로그인</MyButton>
+          <MyButton testId="signin-button">로그인</MyButton>
           <MyButton clickHandle={cancelBtnHandle}>취소</MyButton>
         </section>
       </div>
