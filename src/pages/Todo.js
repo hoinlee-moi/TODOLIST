@@ -1,16 +1,30 @@
-import { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useReducer, useState } from "react";
 
 import styles from "./Todo.module.css";
 import { testList } from "../dummy";
 import TodoCreate from "../components/TodoCreate";
 import TodoItem from "../components/TodoItem";
+import { reducer } from "../reducer";
 const Todo = () => {
-  const [listData, setListData] = useState(testList);
-  useEffect(() => {}, []);
+  const [listData, dispatch] = useReducer(reducer, []);
+  useEffect(() => {
+    dispatch({ type: "INIT", data: testList });
+  }, []);
 
-  const changeHandle = (e) => {
-    console.log(e.target.checked);
-  };
+  const checkChangeHandle = useCallback(
+    (id, check) => {
+      dispatch({ type: "CHANGE", data: { id: id, check: check } });
+    },
+    [listData]
+  );
+
+  const onCreateTodo = (value) => {
+    dispatch({type:"CREATE",data:value})
+  }
+
+  const onDeleteTodo = (id) => {
+    dispatch({type:"DELETE",data:id})
+  }
 
   return (
     <div className={styles.todoBackground}>
@@ -25,14 +39,14 @@ const Todo = () => {
               {listData
                 .filter((item) => item.isCompleted)
                 .map((item) => (
-                  <TodoItem item={item} />
+                  <TodoItem item={item} onChange={checkChangeHandle} />
                 ))}
             </section>
             <section className={styles.nonCheckedWrap}>
               {listData
                 .filter((item) => !item.isCompleted)
                 .map((item) => (
-                  <TodoItem item={item} />
+                  <TodoItem item={item} onChange={checkChangeHandle} />
                 ))}
             </section>
           </div>
@@ -42,4 +56,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export default React.memo(Todo);

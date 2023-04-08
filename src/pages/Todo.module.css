@@ -34,7 +34,7 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  width: 90%;
+  width: 100%;
   margin: 0 auto 30px auto;
 }
 .inputWrap input {
@@ -54,24 +54,44 @@
 .todoListContainer {
   width: 100%;
 }
+.checkedWrap,
+.nonCheckedWrap {
+  display: flex;
+  flex-direction: column;
+}
 .listWrap {
   display: flex;
   flex-direction: column;
   width: 70%;
   margin: auto;
 }
-.listWrap li {
-    margin-bottom: 10px;
-    font-size: calc(20px + 0.5vw);;
+.listItemBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+  font-size: calc(12px + 0.5vw);
 }
-.listWrap input {
-    margin-right: 20px;
+.listItemBox label {
+  display: flex;
+  width: 90%;
+  cursor: pointer;
 }
-.checkedWrap , .nonCheckedWrap {
-    display: flex;
-    flex-direction: column;
+.listItemBox p {
+  width: 100%;
+  word-break: break-all;
+}
+.listItemBox input {
+  margin-right: 20px;
 }
 
+.editBtn , .deleteBtn {
+  width: 40px;
+  height: 30px;
+}
+
+/* media */
 @media (max-width: 1100px) {
   .todoContainer {
     min-width: 450px;
@@ -80,9 +100,17 @@
     font-size: 44px;
   }
   .inputWrap input {
-    width: 80%
+    width: 80%;
   }
-
+  .listWrap {
+    width: 70%;
+  }
+  .listItemBox {
+    margin-bottom: 15px;
+  }
+  .listItemBox label {
+    width: 80%;
+  }
 }
 
 @media (max-width: 380px) {
@@ -95,7 +123,7 @@
   }
   .inputWrap button {
     position: absolute;
-    right: -1px;
+    right: 14px;
     font-size: 16px;
     padding: 8px;
     border-top-right-radius: 5px;
@@ -105,5 +133,12 @@
   .inputWrap button:hover {
     background-color: #212121;
     color: white;
+  }
+  .listWrap {
+    width: 90%;
+    max-width: 250px;
+  }
+  .listItemBox {
+    margin-bottom: 10px;
   }
 }
