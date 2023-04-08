@@ -5,7 +5,7 @@ const MyCheckBox = ({onChange, checked}) => {
   return (
     <input
       type="checkbox"
-      onChange={(e) => setCheckState(e.target.checked)}
+      onChange={(e) => onChange(e.target.checked)}
       defaultChecked={checkState}
     />
   );

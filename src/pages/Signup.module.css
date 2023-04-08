@@ -9,26 +9,7 @@
 .signUpOut {
   animation: end 1s;
 }
-@keyframes start {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes end {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
+
 .signUpContainer {
   display: flex;
   flex-direction: column;
@@ -56,17 +37,17 @@
   border-bottom: 1px solid gray;
   outline: none;
 }
-.inputWrap input::placeholder { 
-  font-size:larger ;
+.inputWrap input::placeholder {
+  font-size: larger;
 }
 
 .signUpBtnWrap {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 300px;
 }
 .signUpBtnWrap button {
-  margin-top: 20px;
+  margin: 20px 20px 0 20px;
   padding: 10px;
   font-size: 1.5vw;
   border-radius: 3px;
@@ -91,5 +72,27 @@
 @media (max-width: 1200px) {
   .signUpBtnWrap button {
     font-size: 18px;
+    margin: 10px 10px 0 10px;
+  }
+}
+
+@keyframes start {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes end {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
   }
 }

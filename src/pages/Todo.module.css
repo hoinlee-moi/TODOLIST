@@ -1,0 +1,109 @@
+.todoBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fcfcfc;
+}
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  min-height: 95vh;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px gray;
+}
+.titleWrap {
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.titleWrap h2 {
+  font-size: 4vw;
+  padding-top: 40px;
+}
+
+.todoInputContainer {
+  width: 100%;
+}
+.inputWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 90%;
+  margin: 0 auto 30px auto;
+}
+.inputWrap input {
+  width: 500px;
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+}
+.inputWrap button {
+  font-size: 20px;
+  padding: 8px;
+}
+.inputWrap button:hover {
+  font-weight: bold;
+}
+
+.todoListContainer {
+  width: 100%;
+}
+.listWrap {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+}
+.listWrap li {
+    margin-bottom: 10px;
+    font-size: calc(20px + 0.5vw);;
+}
+.listWrap input {
+    margin-right: 20px;
+}
+.checkedWrap , .nonCheckedWrap {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 1100px) {
+  .todoContainer {
+    min-width: 450px;
+  }
+  .titleWrap h2 {
+    font-size: 44px;
+  }
+  .inputWrap input {
+    width: 80%
+  }
+
+}
+
+@media (max-width: 380px) {
+  .todoContainer {
+    min-width: 300px;
+  }
+  .inputWrap input {
+    width: 90%;
+    padding-right: 47px;
+  }
+  .inputWrap button {
+    position: absolute;
+    right: -1px;
+    font-size: 16px;
+    padding: 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: #e2e2e2;
+  }
+  .inputWrap button:hover {
+    background-color: #212121;
+    color: white;
+  }
+}

@@ -5,41 +5,18 @@
   width: 100vw;
   min-height: 100vh;
 }
-.signUpani {
-  animation: signUpMove 1s;
-}
-.signInani {
-  animation :signInMove 1s; 
-}
-@keyframes signUpMove{
-  from{
-    transform: translateX(0);
-    opacity: 1;
-  }to{
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-@keyframes signInMove{
-  from{
-    transform: translateX(0);
-    opacity: 1;
-  }to{
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
+
 .mainWrap {
   display: flex;
   flex-direction: column;
 }
+
 .titleWrap {
   font-size: 3vw;
-  animation: titlePadeIn 0.8s ease-out forwards;
   white-space: nowrap;
   opacity: 0;
+  animation: titlePadeIn 0.8s ease-out forwards;
 }
-
 @keyframes titlePadeIn {
   from {
     transform: translateY(60%);
@@ -56,16 +33,15 @@
   justify-content: center;
   text-align: center;
 }
+
 .signBtnWrap button {
   margin: 10px 15px 0 0;
   padding: 10px;
   font-size: 2vw;
-  
+  opacity: 0;
   animation: signBtnFadeIn 0.8s ease-out forwards;
   animation-delay: 0.6s;
-  opacity: 0;
 }
-
 @keyframes signBtnFadeIn {
   from {
     transform: translateY(40%);
@@ -75,18 +51,62 @@
     opacity: 1;
   }
 }
+
+
 .signBtnWrap button:hover {
-    font-weight: bold;
+  font-weight: bold;
+}
+
+.signUpani {
+  animation: signUpMove 1s;
+}
+@keyframes signUpMove {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+.signInani {
+  animation: signInMove 1s; 
+}
+@keyframes signInMove {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* media */
+@media (max-width:380px) { 
+  .titleWrap {
+    font-size: 18px;
+  }
+  .signBtnWrap button {
+    margin: 5px 5px 0 5px;
+  }
 }
 
 @media (max-width: 728px) {
   .titleWrap {
     font-size: 22px;
   }
-  
 }
-@media (max-width:900px) {
+
+@media (max-width: 900px) {
   .signBtnWrap button {
     font-size: 18px;
   }
 }
+
+
+
+

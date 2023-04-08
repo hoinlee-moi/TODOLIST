@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
-import MyButton from "../components/MyButton";
+
 import styles from "./Todo.module.css";
 import { testList } from "../dummy";
-import MyCheckBox from "../components/MyCheckBox";
 import TodoCreate from "../components/TodoCreate";
 import TodoItem from "../components/TodoItem";
 const Todo = () => {
   const [listData, setListData] = useState(testList);
-  const [checkedList,setCheckedList] = useState([])
-  const [nonCheckedList,setNonCheckedList] = useState([])
-  useEffect(() => {
-    const check = listData.filter(item=>item.isCompleted)
-    const nonCheck = listData.filter(item=>!item.isCompleted)
-    setCheckedList(snap=>[...snap,...check])
-    setNonCheckedList(snap=>[...snap,...nonCheck])
-  }, []);
+  useEffect(() => {}, []);
 
-  const changeHandle = (e) =>{
-    console.log(e.target.checked)
-  } 
+  const changeHandle = (e) => {
+    console.log(e.target.checked);
+  };
 
   return (
     <div className={styles.todoBackground}>
@@ -29,16 +21,20 @@ const Todo = () => {
         <TodoCreate />
         <section className={styles.todoListContainer}>
           <div className={styles.listWrap}>
-            {checkedList.map((item) => {
-              return (
-                <TodoItem item={item} />
-              );
-            })}
-            {nonCheckedList.map((item) => {
-              return (
-                <TodoItem item={item} />
-              );
-            })}
+            <section className={styles.checkedWrap}>
+              {listData
+                .filter((item) => item.isCompleted)
+                .map((item) => (
+                  <TodoItem item={item} />
+                ))}
+            </section>
+            <section className={styles.nonCheckedWrap}>
+              {listData
+                .filter((item) => !item.isCompleted)
+                .map((item) => (
+                  <TodoItem item={item} />
+                ))}
+            </section>
           </div>
         </section>
       </div>
