@@ -5,7 +5,30 @@
   width: 100vw;
   min-height: 100vh;
 }
-
+.signUpani {
+  animation: signUpMove 1s;
+}
+.signInani {
+  animation :signInMove 1s; 
+}
+@keyframes signUpMove{
+  from{
+    transform: translateX(0);
+    opacity: 1;
+  }to{
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+@keyframes signInMove{
+  from{
+    transform: translateX(0);
+    opacity: 1;
+  }to{
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
 .mainWrap {
   display: flex;
   flex-direction: column;

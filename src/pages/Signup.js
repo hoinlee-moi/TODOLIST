@@ -17,6 +17,7 @@ const SignUp = () => {
   });
   const [failMs, setFailMs] = useState("");
   const [permit, setPermit] = useState(false);
+  const [signUpOut, setSignUpOut] = useState(false);
 
   useEffect(() => {
     setFailMs("");
@@ -25,9 +26,9 @@ const SignUp = () => {
       signUpData.password.length >= 8 &&
       signUpData.password === signUpData.rePassword
     ) {
-      setPermit(true)
-    }else{
-      setPermit(false)
+      setPermit(true);
+    } else {
+      setPermit(false);
     }
   }, [signUpData]);
 
@@ -49,10 +50,20 @@ const SignUp = () => {
 
   const signUpHandler = useCallback(async () => {
     console.log(signUpData, "성공");
+    setSignUpOut(true);
   }, [signUpData]);
 
+  const cancelBtnHandle = () => {
+    setSignUpOut(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 500);
+  };
+
   return (
-    <div className={styles.signUpBackground}>
+    <div
+      className={`${styles.signUpBackground} ${signUpOut && styles.signUpOut}`}
+    >
       <div className={styles.signUpContainer}>
         <section className={styles.titleWrap}>
           <h2>회원가입</h2>
@@ -91,11 +102,13 @@ const SignUp = () => {
             clickHandle={signUpHandler}
             testId="signup-button"
             disable={!permit && "disabled"}
-            className={permit?styles.signUpBtn:styles.signUpFailBtn}
+            className={permit ? styles.signUpBtn : styles.signUpFailBtn}
           >
             회원가입
           </MyButton>
-          <MyButton clickHandle={() => navigate("/")} className={styles.cancelBtn}>취소</MyButton>
+          <MyButton clickHandle={cancelBtnHandle} className={styles.cancelBtn}>
+            취소
+          </MyButton>
         </section>
       </div>
     </div>
