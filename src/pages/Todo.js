@@ -6,6 +6,7 @@ import reducer from "../reducer";
 import TodoList from "../components/TodoList";
 import axios from "axios";
 import { redirect, useNavigate } from "react-router-dom";
+import MyButton from "../components/MyButton";
 
 export const TodoStateContext = React.createContext();
 export const TodoDispatchContext = React.createContext();
@@ -16,6 +17,11 @@ const Todo = () => {
   useEffect(() => {
     initData();
   }, []);
+  const removeToken = (value,url) => {
+    localStorage.removeItem("access_token");
+    navigate(`/${url}`, { replace: true });
+    alert(value);
+  };
   const initData = async () => {
     await axios
       .get("https://www.pre-onboarding-selection-task.shop/todos", {
@@ -30,9 +36,7 @@ const Todo = () => {
       })
       .catch((err) => {
         if (err.response.status === 401) {
-          localStorage.removeItem("access_token")
-          navigate("/signin", { replace: true });
-          alert("로그인 정보가 유효하지 않습니다");
+          removeToken("로그인 정보가 유효하지 않습니다","signin");
         }
       });
   };
@@ -55,7 +59,9 @@ const Todo = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.status === 401) {
+          removeToken("로그인 정보가 유효하지 않습니다","signin");
+        }
       });
   };
   const onCreateTodo = async (value) => {
@@ -71,14 +77,14 @@ const Todo = () => {
         }
       )
       .then((res) => {
-        console.log(res);
         if (res.status === 201) {
           dispatch({ type: "CREATE", data: res.data });
         }
       })
       .catch((err) => {
-        console.log(err);
-        alert("서버 연결이 올바르지 않습니다");
+        if (err.response.status === 401) {
+          removeToken("로그인 정보가 유효하지 않습니다","signin");
+        }
       });
   };
 
@@ -94,9 +100,15 @@ const Todo = () => {
           if (res.status === 204) dispatch({ type: "DELETE", targetId: id });
         })
         .catch((err) => {
-          console.log(err);
+          if (err.response.status === 401) {
+            removeToken("로그인 정보가 유효하지 않습니다","signin");
+          }
         });
     }
+  };
+  const onLogout = () => {
+    if (window.confirm("로그아웃 하시겠습니까?"))
+      removeToken("로그아웃을 완료하였습니다","/");
   };
   return (
     <TodoStateContext.Provider value={listData}>
@@ -105,6 +117,12 @@ const Todo = () => {
       >
         <div className={styles.todoBackground}>
           <div className={styles.todoContainer}>
+            <div className={styles.logoutWrap}>
+              <label htmlFor="logOut">
+                <img src={`${process.env.PUBLIC_URL}/assets/logout_icon.png`} />
+              </label>
+                <MyButton id="logOut"clickHandle={onLogout}></MyButton>
+            </div>
             <section className={styles.titleWrap}>
               <h2>TO DO LIST!</h2>
             </section>

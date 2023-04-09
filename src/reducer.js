@@ -1,14 +1,12 @@
-
-const reducer =  (state, action) => {
+const reducer = (state, action) => {
   let newState = [];
   switch (action.type) {
     case "INIT": {
       return action.data;
     }
     case "UPDATE": {
-      newState = state.map((item) =>
-        item.id === action.data.id ? {...action.data} : item
-      );
+      newState = state.filter((item) => item.id !== action.data.id);
+      newState.push({...action.data})
       break;
     }
     case "CREATE": {

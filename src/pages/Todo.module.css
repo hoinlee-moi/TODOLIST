@@ -10,11 +10,28 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   width: 60%;
   min-height: 95vh;
   background-color: white;
   border-radius: 5px;
   box-shadow: 1px 1px 15px gray;
+}
+
+.logoutWrap {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 50px;
+  height: 50px;
+}
+.logoutWrap img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.logoutWrap button {
+  display: none;
 }
 .titleWrap {
   width: 100%;
@@ -86,7 +103,8 @@
   margin-right: 20px;
 }
 
-.editBtn , .deleteBtn {
+.editBtn,
+.deleteBtn {
   width: 40px;
   height: 30px;
 }
@@ -140,5 +158,9 @@
   }
   .listItemBox {
     margin-bottom: 10px;
+  }
+  .logoutWrap {
+    width: 25px;
+    height: 25px;
   }
 }

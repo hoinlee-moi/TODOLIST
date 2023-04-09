@@ -6,7 +6,6 @@ import SignUp from "./pages/SignUp";
 import Todo from "./pages/Todo";
 
 const Router = () => {
-  const isLogin = localStorage.getItem("access_token");
   const router = createBrowserRouter([
     { path: "/", element: <Main /> },
     {

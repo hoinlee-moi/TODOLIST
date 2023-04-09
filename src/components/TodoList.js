@@ -7,9 +7,9 @@ const TodoList = ({ checked }) => {
   const listData = useContext(TodoStateContext);
   const checkFilter = () => {
     if (checked) {
-      return listData.filter((item) => item.isCompleted);
+      return listData.filter((item) => item.isCompleted)
     } else {
-      return listData.filter((item) => !item.isCompleted);
+      return listData.filter((item) => !item.isCompleted)
     }
   };
   return (

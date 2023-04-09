@@ -1,7 +1,7 @@
 import React from "react";
-const MyButton = ({ clickHandle, children,className=null, disable=null, testId = null }) => {
+const MyButton = ({ clickHandle, children,className, disable, testId,id }) => {
   return (
-    <button onClick={clickHandle} data-testid={testId} disabled={disable} className={className}>
+    <button onClick={clickHandle} data-testid={testId} disabled={disable} className={className} id={id}>
       {children}
     </button>
   );
