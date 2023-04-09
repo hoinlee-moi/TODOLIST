@@ -12,10 +12,13 @@
 }
 
 .titleWrap {
-  font-size: 3vw;
+  width: 100%;
   white-space: nowrap;
   opacity: 0;
   animation: titlePadeIn 0.8s ease-out forwards;
+}
+.titleWrap h2{
+  font-size: 4vw;
 }
 @keyframes titlePadeIn {
   from {
@@ -87,17 +90,14 @@
 
 /* media */
 @media (max-width:380px) { 
-  .titleWrap {
-    font-size: 18px;
-  }
   .signBtnWrap button {
     margin: 5px 5px 0 5px;
   }
 }
 
-@media (max-width: 728px) {
-  .titleWrap {
-    font-size: 22px;
+@media (max-width: 575px) {
+  .titleWrap h2 {
+    font-size: 23px;
   }
 }
 
