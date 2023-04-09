@@ -60,6 +60,8 @@ const TodoItem = ({ item }) => {
             onKeyDown={(e) => enterKeyEvent(e, onUpdateHandel)}
             ref={inputRef}
             value={editValue}
+            maxLength="25"
+            autoComplete="off"
           />
         ) : (
           <p>{item.todo}</p>

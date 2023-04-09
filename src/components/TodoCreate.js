@@ -22,12 +22,12 @@ const TodoCreate = () => {
         <input
           type="text"
           data-testid="new-todo-input"
-          value={todoValue}
           onChange={(e) => setTodoValue(e.target.value)}
           onKeyDown={(e) => enterKeyEvent(e, createTodo)}
+          value={todoValue}
+          ref={inputRef}
           maxLength="25"
           autoComplete="off"
-          ref={inputRef}
         />
         <MyButton testId="new-todo-add-button" clickHandle={createTodo}>
           추가

@@ -94,19 +94,19 @@ const SignUp = () => {
             type="text"
             name="email"
             placeholder="Email"
+            data-testid="email-input"
             onChange={setSignUpData}
             onBlur={emailCheck}
             autoComplete="off"
-            data-testid="email-input"
           />
           <input
             type="password"
             name="password"
             placeholder="비밀번호 : 8자 이상"
+            data-testid="password-input"
             onChange={setSignUpData}
             onBlur={psCheck}
             autoComplete="off"
-            data-testid="password-input"
           />
           <input
             type="password"
