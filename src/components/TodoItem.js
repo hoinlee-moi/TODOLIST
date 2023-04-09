@@ -12,10 +12,10 @@ const TodoItem = ({ item }) => {
   const [todoEdit, setTodoEdit] = useState(false);
   const inputRef = useRef(null);
   const { onDeleteTodo, onUpdateTodo } = useContext(TodoDispatchContext);
-  const changeHandle = useCallback((e) => {
+  const changeHandle = (e) => {
     onUpdateTodo(item.id, e.target.checked, item.todo, false);
-  },[item]);
-  const editChangeHandle = useCallback((e) => {
+  };
+  const editChangeHandle = (e) => {
     const buttonName = e.target.textContent;
     if (buttonName === "삭제") {
       onDeleteTodo(item.id);
@@ -37,12 +37,12 @@ const TodoItem = ({ item }) => {
       onUpdateHandel();
       return;
     }
-  },[editValue,todoEdit]);
+  };
 
-  const onUpdateHandel = useCallback(() => {
+  const onUpdateHandel = () => {
     onUpdateTodo(item.id, item.isCompleted, editValue, true);
     setTodoEdit(false);
-  },[editValue,todoEdit]);
+  };
   return (
     <li className={styles.listItemBox}>
       <label>
