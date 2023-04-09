@@ -1,5 +1,5 @@
 # :notebook_with_decorative_cover: TO DO LIST!
-<span style="font-size : 18px">**개인 미니 프로젝트(pre-onboarding)**</span>
+<span style="font-size : 25px">**개인 미니 프로젝트(pre-onboarding)**</span>
 
 <br>
 <br>
@@ -15,10 +15,14 @@
 5.npm start <br><br>
 
 로 바로 테스트 가능합니다.
-<br>
-또는 배포가 완료된 상태이니 아래 링크로 접속하시면 바로 테스트 가능합니다
 
-**:point_right: [TO DO LIST](https://to-do-list-wonted.web.app/)**
+<br>
+
+또는 <span style="font-size : 18px">**배포**가 완료된 상태이니 아래 링크로 접속하시면 바로 테스트 가능합니다</span>
+
+<br>
+
+<span style="font-size : 25px">**:point_right: [TO DO LIST](https://to-do-list-wonted.web.app/)**</span>
 
 <br><br>
 
