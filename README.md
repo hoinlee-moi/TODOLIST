@@ -22,7 +22,11 @@
 
 <br>
 
-<span style="font-size : 25px">**:point_right: [TO DO LIST](https://to-do-list-wonted.web.app/)**</span>
+또는 <span style="font-size : 20px">**배포**가 완료된 상태이니 아래 링크로 접속하시면 바로 테스트 가능합니다</span>
+
+<br>
+
+<span style="font-size : 25px"> **:point_right: [TO DO LIST](https://to-do-list-wonted.web.app/)**</span>
 
 <br><br>
 
