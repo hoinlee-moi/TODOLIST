@@ -6,8 +6,28 @@
   min-height: 100vh;
   animation: start 1s;
 }
+@keyframes start {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 .signUpOut {
   animation: end 1s;
+}
+@keyframes end {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
 }
 
 .signUpContainer {
@@ -49,8 +69,8 @@
 .signUpBtnWrap button {
   margin: 20px 20px 0 20px;
   padding: 10px;
-  font-size: 1.5vw;
   border-radius: 3px;
+  font-size: 1.5vw;
   background-color: #e2e2e2;
   color: black;
 }
@@ -62,8 +82,9 @@
 .signUpBtn:hover {
   background-color: #212121;
   color: white;
-  /* font-weight: bold; */
 }
+
+/* media */
 @media (max-width: 1100px) {
   .titleWrap {
     font-size: 22px;
@@ -71,28 +92,10 @@
 }
 @media (max-width: 1200px) {
   .signUpBtnWrap button {
-    font-size: 18px;
     margin: 10px 10px 0 10px;
+    font-size: 18px;
   }
 }
 
-@keyframes start {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-@keyframes end {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
+
+
