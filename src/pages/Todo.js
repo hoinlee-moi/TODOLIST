@@ -108,7 +108,7 @@ const Todo = () => {
   };
   const onLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?"))
-      removeToken("로그아웃을 완료하였습니다","/");
+      removeToken("로그아웃을 완료하였습니다");
   };
   return (
     <TodoStateContext.Provider value={listData}>

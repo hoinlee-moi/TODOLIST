@@ -1,10 +1,13 @@
-import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import { checkToken } from "../checkToken";
 import MyButton from "../components/MyButton";
 import useInput from "../hooks/useInput";
 import styles from "./SignIn.module.css";
+
+const reg = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+/i);
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -13,18 +16,27 @@ const SignIn = () => {
     password: "",
   });
   const [failMs, setFailMs] = useState("");
+  const [permit, setPermit] = useState(false);
   const [signInOut, setSignInOut] = useState(false);
 
   useEffect(() => {
     checkToken();
   }, []);
+  useEffect(() => {
+    setFailMs("");
+    if (reg.test(signInData.email) && signInData.password.length >= 8) {
+      setPermit(true);
+    } else {
+      setPermit(false);
+    }
+  }, [signInData]);
 
   const cancelBtnHandle = useCallback(() => {
     setSignInOut(true);
     setTimeout(() => {
       navigate("/");
     }, 500);
-  }, [signInOut]);
+  }, []);
   const signInHandle = useCallback(async () => {
     await axios
       .post(
@@ -71,10 +83,17 @@ const SignIn = () => {
         </section>
         {failMs.length > 0 && <p>{failMs}</p>}
         <section className={styles.signInBtnWrap}>
-          <MyButton testId="signin-button" clickHandle={signInHandle}>
+          <MyButton
+            testId="signin-button"
+            clickHandle={signInHandle}
+            disable={!permit && "disabled"}
+            className={permit ? styles.signInBtn : styles.signInFailBtn}
+          >
             로그인
           </MyButton>
-          <MyButton clickHandle={cancelBtnHandle}>취소</MyButton>
+          <MyButton clickHandle={cancelBtnHandle} className={styles.cancelBtn}>
+            취소
+          </MyButton>
         </section>
       </div>
     </div>
