@@ -4,9 +4,15 @@ const reducer = (state, action) => {
     case "INIT": {
       return action.data;
     }
-    case "UPDATE": {
+    case "CHECKED": {
       newState = state.filter((item) => item.id !== action.data.id);
-      newState.push({...action.data})
+      newState.push({ ...action.data });
+      break;
+    }
+    case "UPDATE": {
+      newState = state.map((item) =>
+        item.id === action.data.id ? { ...action.data } : item
+      );
       break;
     }
     case "CREATE": {

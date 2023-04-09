@@ -13,7 +13,7 @@ const TodoItem = ({ item }) => {
   const inputRef = useRef(null);
   const { onDeleteTodo, onUpdateTodo } = useContext(TodoDispatchContext);
   const changeHandle = (e) => {
-    onUpdateTodo(item.id, e.target.checked, item.todo);
+    onUpdateTodo(item.id, e.target.checked, item.todo,false);
   };
   const editChangeHandle = (e) => {
     const buttonName = e.target.textContent;
@@ -40,7 +40,7 @@ const TodoItem = ({ item }) => {
   };
 
   const onUpdateHandel = () => {
-    onUpdateTodo(item.id, item.isCompleted, editValue);
+    onUpdateTodo(item.id, item.isCompleted, editValue,true);
     setTodoEdit(false);
   };
   return (

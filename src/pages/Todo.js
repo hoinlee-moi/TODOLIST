@@ -44,7 +44,7 @@ const Todo = () => {
       });
   };
 
-  const onUpdateTodo = async (id, check, value) => {
+  const onUpdateTodo = async (id, check, value, valueEdit) => {
     await axios
       .put(
         `https://www.pre-onboarding-selection-task.shop/todos/${id}`,
@@ -58,7 +58,10 @@ const Todo = () => {
       )
       .then((res) => {
         if (res.status === 200) {
-          dispatch({ type: "UPDATE", data: res.data });
+          dispatch({
+            type: `${valueEdit ? "UPDATE" : "CHECKED"}`,
+            data: res.data,
+          });
         }
       })
       .catch((err) => {
