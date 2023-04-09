@@ -19,7 +19,7 @@ const Todo = () => {
   }, []);
   const removeToken = (value,url) => {
     localStorage.removeItem("access_token");
-    navigate(`/${url}`, { replace: true });
+    navigate(`${url}`, { replace: true });
     alert(value);
   };
   const initData = async () => {
@@ -36,7 +36,7 @@ const Todo = () => {
       })
       .catch((err) => {
         if (err.response.status === 401) {
-          removeToken("로그인 정보가 유효하지 않습니다","signin");
+          removeToken("로그인 정보가 유효하지 않습니다","/signin");
         }
       });
   };
@@ -60,7 +60,7 @@ const Todo = () => {
       })
       .catch((err) => {
         if (err.response.status === 401) {
-          removeToken("로그인 정보가 유효하지 않습니다","signin");
+          removeToken("로그인 정보가 유효하지 않습니다","/signin");
         }
       });
   };
@@ -83,7 +83,7 @@ const Todo = () => {
       })
       .catch((err) => {
         if (err.response.status === 401) {
-          removeToken("로그인 정보가 유효하지 않습니다","signin");
+          removeToken("로그인 정보가 유효하지 않습니다","/signin");
         }
       });
   };
@@ -101,14 +101,14 @@ const Todo = () => {
         })
         .catch((err) => {
           if (err.response.status === 401) {
-            removeToken("로그인 정보가 유효하지 않습니다","signin");
+            removeToken("로그인 정보가 유효하지 않습니다","/signin");
           }
         });
     }
   };
   const onLogout = () => {
     if (window.confirm("로그아웃 하시겠습니까?"))
-      removeToken("로그아웃을 완료하였습니다");
+      removeToken("로그아웃을 완료하였습니다","/");
   };
   return (
     <TodoStateContext.Provider value={listData}>
