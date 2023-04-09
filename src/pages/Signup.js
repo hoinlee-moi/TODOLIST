@@ -5,8 +5,10 @@ import axios from "axios";
 import MyButton from "../components/MyButton";
 import useInput from "../hooks/useInput";
 import styles from "./Signup.module.css";
+import { checkToken } from "../checkToken";
 
-const reg = new RegExp(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/);
+// const reg = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i)
+const reg = new RegExp(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+/i);
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -18,6 +20,11 @@ const SignUp = () => {
   const [failMs, setFailMs] = useState("");
   const [permit, setPermit] = useState(false);
   const [signUpOut, setSignUpOut] = useState(false);
+
+  useEffect(()=>{
+    checkToken()
+  },[])
+
 
   useEffect(() => {
     setFailMs("");
@@ -49,16 +56,30 @@ const SignUp = () => {
   }, [signUpData.rePassword]);
 
   const signUpHandler = useCallback(async () => {
-    console.log(signUpData, "성공");
-    setSignUpOut(true);
+    await axios.post(
+      "https://www.pre-onboarding-selection-task.shop/auth/signup",
+      { email: signUpData.email, password: signUpData.password },
+      {headers:{
+        "Content-Type": "application/json"
+      }}
+    ).then(res=>{
+      if(res.status===201){
+        setSignUpOut(true)
+        setTimeout(() => {
+          navigate("/signin");
+        }, 500);
+      }
+    }).catch(err=>{
+      setFailMs(err.response.data.message)
+    })
   }, [signUpData]);
 
-  const cancelBtnHandle = () => {
+  const cancelBtnHandle = useCallback(() => {
     setSignUpOut(true);
     setTimeout(() => {
       navigate("/");
     }, 500);
-  };
+  }, [signUpOut]);
 
   return (
     <div

@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./pages/Main";
 import NoMatch from "./pages/NoMatch";
 import SignIn from "./pages/SignIn";
@@ -12,6 +6,7 @@ import SignUp from "./pages/SignUp";
 import Todo from "./pages/Todo";
 
 const Router = () => {
+  const isLogin = localStorage.getItem("access_token");
   const router = createBrowserRouter([
     { path: "/", element: <Main /> },
     {
@@ -22,10 +17,11 @@ const Router = () => {
     {
       path: "/todo",
       element: <Todo />,
-    },{
-        path: "*",
-        element: <NoMatch />
-    }
+    },
+    {
+      path: "*",
+      element: <NoMatch />,
+    },
   ]);
   return <RouterProvider router={router} />;
 };
