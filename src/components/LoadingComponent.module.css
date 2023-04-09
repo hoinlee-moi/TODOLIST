@@ -1,0 +1,31 @@
+.loadingContainer {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.loding {
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(to right, white, #bdc3c7, white);
+  animation: loading-animation 2s infinite;
+}
+.todoLoadingContainer{
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.todoLoading {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, white, #bdc3c7, white);
+  animation: loading-animation 2s infinite
+}
+
+@keyframes loading-animation {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

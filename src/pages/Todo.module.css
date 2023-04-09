@@ -1,0 +1,175 @@
+.todoBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #fcfcfc;
+}
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 60%;
+  min-height: 95vh;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px gray;
+  background-color: white;
+}
+
+.logoutWrap {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.logoutWrap img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+.logoutWrap button {
+  display: none;
+}
+.titleWrap {
+  width: 100%;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.titleWrap h2 {
+  padding-top: 40px;
+  font-size: 4vw;
+}
+
+.todoInputContainer {
+  width: 100%;
+}
+.inputWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  margin: 0 auto 30px auto;
+}
+.inputWrap input {
+  width: 500px;
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+}
+.inputWrap button {
+  padding: 8px;
+  font-size: 20px;
+}
+.inputWrap button:hover {
+  font-weight: bold;
+}
+
+.todoListContainer {
+  width: 100%;
+}
+.checkedWrap,
+.nonCheckedWrap {
+  display: flex;
+  flex-direction: column;
+}
+.listWrap {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  margin: auto;
+}
+.listItemBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+  font-size: calc(12px + 0.5vw);
+}
+.listItemBox label {
+  display: flex;
+  width: 90%;
+  cursor: pointer;
+}
+.listItemBox p {
+  width: 100%;
+  box-sizing: border-box;
+  word-break: break-all;
+}
+.checkInput {
+  margin-right: 20px;
+}
+.editInput {
+  width: 90%;
+  box-sizing: border-box;
+  font-size: calc(12px + 0.5vw);
+}
+
+.editBtn,
+.deleteBtn {
+  width: 40px;
+  height: 30px;
+}
+
+/* media */
+@media (max-width: 1100px) {
+  .todoContainer {
+    min-width: 450px;
+  }
+  .titleWrap h2 {
+    font-size: 44px;
+  }
+  .inputWrap input {
+    width: 80%;
+  }
+  .listWrap {
+    width: 70%;
+  }
+  .listItemBox {
+    margin-bottom: 15px;
+  }
+  .listItemBox label {
+    width: 80%;
+  }
+}
+
+@media (max-width: 380px) {
+  .todoContainer {
+    min-width: 300px;
+  }
+  .inputWrap input {
+    width: 90%;
+    padding-right: 47px;
+  }
+  .inputWrap button {
+    position: absolute;
+    right: 14px;
+    padding: 8px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 16px;
+    background-color: #e2e2e2;
+  }
+  .inputWrap button:hover {
+    background-color: #212121;
+    color: white;
+  }
+  .listWrap {
+    width: 90%;
+    max-width: 250px;
+  }
+  .listItemBox {
+    margin-bottom: 10px;
+  }
+  .logoutWrap {
+    width: 25px;
+    height: 25px;
+  }
+  .editInput {
+    width: 100%;
+  }
+}

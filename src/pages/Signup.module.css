@@ -1,0 +1,101 @@
+.signUpBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  animation: start 1s;
+}
+@keyframes start {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.signUpOut {
+  animation: end 1s;
+}
+@keyframes end {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.signUpContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.titleWrap {
+  margin: 20px;
+  font-size: 2vw;
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputWrap input {
+  width: 70vw;
+  max-width: 500px;
+  height: 40px;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid gray;
+  outline: none;
+}
+.inputWrap input::placeholder {
+  font-size: larger;
+}
+
+.signUpBtnWrap {
+  display: flex;
+  justify-content: space-evenly;
+  width: 300px;
+}
+.signUpBtnWrap button {
+  margin: 20px 20px 0 20px;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 1.5vw;
+  background-color: #e2e2e2;
+  color: black;
+}
+
+.signUpFailBtn {
+  cursor: default;
+}
+.cancelBtn:hover,
+.signUpBtn:hover {
+  background-color: #212121;
+  color: white;
+}
+
+/* media */
+@media (max-width: 1100px) {
+  .titleWrap {
+    font-size: 22px;
+  }
+}
+@media (max-width: 1200px) {
+  .signUpBtnWrap button {
+    margin: 10px 10px 0 10px;
+    font-size: 18px;
+  }
+}
+
+
+
