@@ -141,7 +141,7 @@ const Todo = () => {
                     <TodoList checked={false} />
                   </>
                 ) : (
-                  <LoadingComponent />
+                  <LoadingComponent className={"todoLoading"}/>
                 )}
               </div>
             </section>

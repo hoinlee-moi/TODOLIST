@@ -1,8 +1,8 @@
 import styles from "./LoadingComponent.module.css"
-const LoadingComponent = () => {
+const LoadingComponent = ({className}) => {
   return (
-    <div className={styles.loadingContainer}>
-      <div className={styles.loding}></div>
+    <div className={`${className?styles.todoLoadingContainer:styles.loadingContainer}`}>
+      <div className={`${className?styles.todoLoading:styles.loding}`}></div>
     </div>
   );
 };
