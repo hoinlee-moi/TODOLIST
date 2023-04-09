@@ -20,7 +20,7 @@ const SignIn = () => {
   const [signInOut, setSignInOut] = useState(false);
 
   useEffect(() => {
-    checkToken();
+    if(checkToken()) navigate("/todo")
   }, []);
   useEffect(() => {
     setFailMs("");

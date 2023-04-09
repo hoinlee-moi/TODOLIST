@@ -22,7 +22,7 @@ const SignUp = () => {
   const [signUpOut, setSignUpOut] = useState(false);
 
   useEffect(()=>{
-    checkToken()
+    if(checkToken()) navigate("/todo")
   },[])
 
 

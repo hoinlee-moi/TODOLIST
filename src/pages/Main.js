@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { checkToken } from "../checkToken";
+import LoadingComponent from "../components/LoadingComponent";
 import MyButton from "../components/MyButton";
 
 import styles from "./Main.module.css";
@@ -9,9 +10,11 @@ const Main = () => {
   const navigate = useNavigate();
   const [signUpMove, setSignUpMove] = useState(0);
   const [moveStyle, setMoveStyle] = useState();
+
   useEffect(() => {
-    checkToken();
+    if(checkToken()) navigate("/todo")
   }, []);
+
   useEffect(() => {
     if (signUpMove === 1) {
       setMoveStyle(styles.signInani);
@@ -32,6 +35,7 @@ const Main = () => {
       navigate("/signIn");
     }, 500);
   };
+
   return (
     <div className={`${styles.mainContainer} ${signUpMove && moveStyle}`}>
       <div className={styles.mainWrap}>
@@ -46,5 +50,4 @@ const Main = () => {
     </div>
   );
 };
-
 export default Main;
