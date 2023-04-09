@@ -13,7 +13,7 @@ const TodoItem = ({ item }) => {
   const inputRef = useRef(null);
   const { onDeleteTodo, onUpdateTodo } = useContext(TodoDispatchContext);
   const changeHandle = (e) => {
-    onUpdateTodo(item.id, e.target.checked, item.todo,false);
+    onUpdateTodo(item.id, e.target.checked, item.todo, false);
   };
   const editChangeHandle = (e) => {
     const buttonName = e.target.textContent;
@@ -40,16 +40,21 @@ const TodoItem = ({ item }) => {
   };
 
   const onUpdateHandel = () => {
-    onUpdateTodo(item.id, item.isCompleted, editValue,true);
+    onUpdateTodo(item.id, item.isCompleted, editValue, true);
     setTodoEdit(false);
   };
   return (
     <li className={styles.listItemBox}>
       <label>
-        <MyCheckBox checked={item.isCompleted} onChange={changeHandle} className={styles.checkInput} />
+        <MyCheckBox
+          checked={item.isCompleted}
+          onChange={changeHandle}
+          className={styles.checkInput}
+        />
         {todoEdit ? (
           <input
             type="text"
+            data-testid="modify-input"
             className={styles.editInput}
             onChange={(e) => setEditValue(e.target.value)}
             onKeyDown={(e) => enterKeyEvent(e, onUpdateHandel)}
@@ -61,10 +66,18 @@ const TodoItem = ({ item }) => {
         )}
       </label>
 
-      <MyButton className={styles.editBtn} clickHandle={editChangeHandle}>
-        {todoEdit ? "완료" : "수정"}
+      <MyButton
+        className={styles.editBtn}
+        clickHandle={editChangeHandle}
+        testId={todoEdit ? "submit-button" : "modify-button"}
+      >
+        {todoEdit ? "제출" : "수정"}
       </MyButton>
-      <MyButton className={styles.deleteBtn} clickHandle={editChangeHandle}>
+      <MyButton
+        className={styles.deleteBtn}
+        clickHandle={editChangeHandle}
+        testId={todoEdit ? "cancel-button" : "delete-button"}
+      >
         {todoEdit ? "취소" : "삭제"}
       </MyButton>
     </li>
