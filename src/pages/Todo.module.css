@@ -97,10 +97,16 @@
 }
 .listItemBox p {
   width: 100%;
+  box-sizing: border-box;
   word-break: break-all;
 }
-.listItemBox input {
+.checkInput {
   margin-right: 20px;
+}
+.editInput {
+  width: 90%;
+  font-size: calc(12px + 0.5vw);
+  box-sizing: border-box;
 }
 
 .editBtn,
@@ -162,5 +168,8 @@
   .logoutWrap {
     width: 25px;
     height: 25px;
+  }
+  .editInput {
+    width: 100%;
   }
 }

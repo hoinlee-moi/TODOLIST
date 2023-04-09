@@ -1,12 +1,14 @@
 import { useContext, useRef, useState } from "react";
-import MyCheckBox from "./MyCheckBox";
-import styles from "../pages/Todo.module.css";
-import MyButton from "./MyButton";
-import { enterKeyEvent } from "../enterKeyEvent";
 import { TodoDispatchContext } from "../pages/Todo";
 
+import MyCheckBox from "./MyCheckBox";
+import MyButton from "./MyButton";
+
+import styles from "../pages/Todo.module.css";
+import { enterKeyEvent } from "../enterKeyEvent";
+
 const TodoItem = ({ item }) => {
-  const [editValue, setEditValue] = useState("");
+  const [editValue, setEditValue] = useState(item.todo);
   const [todoEdit, setTodoEdit] = useState(false);
   const inputRef = useRef(null);
   const { onDeleteTodo, onUpdateTodo } = useContext(TodoDispatchContext);
@@ -32,21 +34,27 @@ const TodoItem = ({ item }) => {
         inputRef.current.focus();
         return;
       }
-      onUpdateTodo(item.id, item.isCompleted, editValue);
-      setTodoEdit(false);
+      onUpdateHandel();
       return;
     }
+  };
+
+  const onUpdateHandel = () => {
+    onUpdateTodo(item.id, item.isCompleted, editValue);
+    setTodoEdit(false);
   };
   return (
     <li className={styles.listItemBox}>
       <label>
-        <MyCheckBox checked={item.isCompleted} onChange={changeHandle} />
+        <MyCheckBox checked={item.isCompleted} onChange={changeHandle} className={styles.checkInput} />
         {todoEdit ? (
           <input
             type="text"
+            className={styles.editInput}
             onChange={(e) => setEditValue(e.target.value)}
+            onKeyDown={(e) => enterKeyEvent(e, onUpdateHandel)}
             ref={inputRef}
-            defaultValue={item.todo}
+            value={editValue}
           />
         ) : (
           <p>{item.todo}</p>
