@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import React,{ useCallback, useContext, useRef, useState } from "react";
 import { TodoDispatchContext } from "../pages/Todo";
 
 import MyCheckBox from "./MyCheckBox";
@@ -12,10 +12,10 @@ const TodoItem = ({ item }) => {
   const [todoEdit, setTodoEdit] = useState(false);
   const inputRef = useRef(null);
   const { onDeleteTodo, onUpdateTodo } = useContext(TodoDispatchContext);
-  const changeHandle = (e) => {
+  const changeHandle = useCallback((e) => {
     onUpdateTodo(item.id, e.target.checked, item.todo, false);
-  };
-  const editChangeHandle = (e) => {
+  },[item]);
+  const editChangeHandle = useCallback((e) => {
     const buttonName = e.target.textContent;
     if (buttonName === "삭제") {
       onDeleteTodo(item.id);
@@ -29,7 +29,7 @@ const TodoItem = ({ item }) => {
       setTodoEdit(false);
       return;
     }
-    if (buttonName === "완료") {
+    if (buttonName === "제출") {
       if (editValue.trim().length < 1) {
         inputRef.current.focus();
         return;
@@ -37,12 +37,12 @@ const TodoItem = ({ item }) => {
       onUpdateHandel();
       return;
     }
-  };
+  },[editValue,todoEdit]);
 
-  const onUpdateHandel = () => {
+  const onUpdateHandel = useCallback(() => {
     onUpdateTodo(item.id, item.isCompleted, editValue, true);
     setTodoEdit(false);
-  };
+  },[editValue,todoEdit]);
   return (
     <li className={styles.listItemBox}>
       <label>
@@ -86,4 +86,4 @@ const TodoItem = ({ item }) => {
   );
 };
 
-export default TodoItem;
+export default React.memo(TodoItem);
